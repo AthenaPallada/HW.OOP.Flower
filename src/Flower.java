@@ -1,61 +1,51 @@
 public class Flower {
-    public String flowerColor;
-    public String country;
-    public double cost;
-    public int lifeSpan;
-    public Flower(String flowerColor, String country, double cost, int lifeSpan) {
-        if(flowerColor == null) {
-            this.flowerColor = "белый";
-        } else {
-            this.flowerColor = flowerColor;
+    private final String flowerName;
+    private String country;
+    private final double cost;
+    private int lifeSpan;
+    public Flower(String flowerName, String country, double cost, int lifeSpan) {
+        if(flowerName == null || flowerName.isEmpty()) {
+            flowerName = "не указан";
         }
-        if(country == null) {
-            this.country = "Россия";
-        } else {
-            this.country = country;
+        this.flowerName = flowerName;
+        if(country == null || country.isEmpty()) {
+            country = "Россия";
         }
+        this.country = country;
         if(cost <= 0) {
-            this.cost = 1;
-        } else {
-            this.cost = cost;
+            cost = 1;
         }
-        if(lifeSpan <= 0 ) {
-            this.lifeSpan = 3;
-        } else {
-            this.lifeSpan = lifeSpan;
-        }
+        this.cost = cost;
+        this.lifeSpan = 3;
     }
-    public Flower(String flowerColor, String country, double cost) {
-        this(flowerColor, country, cost, 3);
+    public Flower(String flowerName, String country, double cost) {
+        this(flowerName, country, cost, 3);
     }
-    public String getFlowerColor() {
-        return flowerColor;
-    }
-    public void setFlowerColor(String flowerColor) {
-        if(flowerColor == null) {
-            this.flowerColor = "белый";
-        } else {
-            this.flowerColor = flowerColor;
-        }
+    public String getFlowerName() {
+        return flowerName;
     }
     public String getCountry() {
         return country;
     }
     public void setCountry(String country) {
-        if(country == null || country.isEmpty()) {
-            this.country = "Россия";
-        } else {
-            this.country = country;
-        }
+        this.country = country;
     }
     public double getCost() {
         return cost;
     }
-    public void setCost(double cost) {
-        if(cost <= 0) {
-            this.cost = 1;
-        } else {
-            this.cost = cost;
+    public int getLifeSpan() {
+        return lifeSpan;
+    }
+    public void setLifeSpan(int lifeSpan) {
+        if(lifeSpan > 0 ) {
+            this.lifeSpan = lifeSpan;
         }
+    }
+    @Override
+    public String toString() {
+        return "Название цветка - " + flowerName +
+                ", страна - " + country +
+                ", стоимость штуки - " + cost +
+                ", срок стояния - " + lifeSpan;
     }
 }
